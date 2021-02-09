@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;  
+}
+
+body  {
+    background-color: #141414;
+    color: white;
+}
+
+.column {
+    max-width: 450px;
+    margin: 12%;
+}
+h2.content {
+    margin: 6%;
+}
+.ui.fluid.submit.button {
+    background-color: #E50914;
+    color: white;
+    margin-top: 30px;
+}
+.ui.fluid.submit.button:hover {
+    background-color: #ff0022;
+}
+.error-message {
+    color: #9F3A38;
+    text-align: left;
+    padding-left: 9px;
+}
+
+/* home page */
+.genres-div {
+    padding: 0px 25px;
+}
+.movie-list {
+    float: left;
+}
+h2.genre-name {
+    padding: 15px 0 9px 0;
+    margin: 0;
+}
+
+.movie-div {
+    padding-right: 6px;
+}
+
+.movie-img {
+    width: calc(100%);
+    height: 170px;
+    object-fit: cover;
+}
+.movie-img-selected {
+    outline: red solid 3px;
+    transform: scale(1.03);
+    transition-duration: 0.1s;
+    width: calc(100%);
+    height: 170px;
+    object-fit: cover;
+}
+
+h4.movie-title {
+    text-align: center;
+    padding-top: 6px;
+}
+
+/* Modal Style */
+.ui.active.dimmer {
+    position: fixed;
+    width: 100%;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0.75;
+    color: #141414;
+    transform: translate(-50%, -50%);
+    background-color: #141414;
+}
+.header {
+    font-size: 2.5rem;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.header h3 {
+    padding-top: 20px;
+}
+
+.content {
+    color: #141414;
+    text-align: center;
+}
+.content img {
+    width: 30%;
+    padding-right: 20px;
+}
+
+.description-overview {
+    padding-top: 3%;
+    padding-bottom: 9%;
+    text-align: left;
+}
+.description-vote {
+    text-align: center;
+    font-size: 2.5rem;
+}
