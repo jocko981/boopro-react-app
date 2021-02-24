@@ -13,12 +13,14 @@ body  {
 }
 
 .column {
-    max-width: 450px;
+    max-width: 27%;
     margin: 12%;
 }
 h2.content {
     margin: 6%;
+    color: white;
 }
+
 .ui.fluid.submit.button {
     background-color: #E50914;
     color: white;
@@ -35,10 +37,11 @@ h2.content {
 
 /* home page */
 .genres-div {
-    padding: 0px 25px;
+    padding: 0px 1.5%;
 }
 .movie-list {
     float: left;
+    width: 100%;
 }
 h2.genre-name {
     padding: 15px 0 9px 0;
@@ -56,8 +59,6 @@ h2.genre-name {
 }
 .movie-img-selected {
     outline: red solid 3px;
-    transform: scale(1.03);
-    transition-duration: 0.1s;
     width: calc(100%);
     height: 170px;
     object-fit: cover;
@@ -109,4 +110,101 @@ h4.movie-title {
 .description-vote {
     text-align: center;
     font-size: 2.5rem;
+}
+
+
+@media screen and (min-width: 2400px) {
+    h2.content {
+        font-size: 3rem;
+        margin: 6%;
+        color: white;
+    }
+    .field input {
+        height: 72px;
+        font-size: 2rem;
+    }
+    .field i {
+        font-size: 2rem;
+    }
+    .ui[class*="left icon"].input>input {
+        padding-left: 66px !important;
+        font-size: 1.5rem;
+    }
+    .ui.fluid.submit.button {
+        margin-top: 50px;
+        height: 72px;
+        font-size: 2rem;
+    }
+    .error-message {
+        padding-top: 3px;
+        font-size: 2rem;
+    }
+
+    /* home page */
+    h2.genre-name {
+        font-size: 3rem;
+    }
+    h4.movie-title {
+        font-size: 1.5rem;
+    }
+    .movie-img {
+        height: 200px;
+    }
+    .movie-img-selected {
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 3800px) {
+    h2.content {
+        font-size: 5rem;
+        margin: 6%;
+        color: white;
+    }
+    .field input::-webkit-input-placeholder {
+        height: 152px;
+        font-size: 2.5rem;
+    }
+    .field input {
+        height: 120px;
+        font-size: 3rem;
+    }
+    .field i {
+        font-size: 3rem;
+    }
+    .ui[class*="left icon"].input>input {
+        padding-left: 120px !important;
+        font-size: 3rem;
+    }
+    .ui.fluid.submit.button {
+        margin-top: 70px;
+        height: 120px;
+        font-size: 3rem;
+    }
+    .error-message {
+        padding-top: 9px;
+        font-size: 2.5rem;
+    }
+
+    /* home page */
+    h2.genre-name {
+        font-size: 6rem;
+    }
+    h4.movie-title {
+        font-size: 3.5rem;
+    }
+    .movie-img {
+        height: 320px;
+    }
+    .movie-img-selected {
+        height: 320px;
+    }
+}
+@media screen and (min-width: 6400px) {
+    .movie-img {
+        height: 450px;
+    }
+    .movie-img-selected {
+        height: 450px;
+    }
 }
