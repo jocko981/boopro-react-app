@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
                             <div className="field">
                                 <div className="ui left icon input">
                                     <i className="user icon"></i>
-                                    <input type="email" name="email" autoFocus placeholder="E-mail address" onChange={(e) => this.setState({ email: e.target.value, error: null })} value={this.state.email} />
+                                    <input className="login-input" type="email" name="email" autoFocus placeholder="E-mail address" onChange={(e) => this.setState({ email: e.target.value, error: null })} value={this.state.email} />
                                 </div>
 
                                 <div className="error-message">
@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
                             <div className="field">
                                 <div className="ui left icon input">
                                     <i className="lock icon"></i>
-                                    <input type="password" name="password" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value, error: null })} value={this.state.password} />
+                                    <input className="login-input" type="password" name="password" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value, error: null })} value={this.state.password} />
                                 </div>
 
                                 <div className="error-message">

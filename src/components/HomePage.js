@@ -1,47 +1,29 @@
 import React from "react";
+import { connect } from "react-redux";
+import { fetchGenres } from "../actions";
+
 import genresData from "../data/genres.json";
-import axios from "axios";
 import GenresList from "./GenresList";
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { genreList: [], moviePopup: false, currentGenre: 0, currentMovie: 0};
-        
-        let allGenres = [];
-       
-        genresData.genres.map((genre) => { 
-            const API_KEY = "d38aa8716411ef7d8e9054b34a6678ac";    
-            return (           
-                axios.get(`https://api.themoviedb.org/3/discover/movie?with_genres=${genre.id}&page=1&api_key=${API_KEY}`)
-                .then(response => {
-                    const genreF = {
-                        genreName: genre.name,
-                        movies: response.data.results.slice(0, 6)
-                    };
-
-                allGenres.push(genreF);
-
-                this.setState({genreList: allGenres});
-            })
-            );
-        })
+        this.state = { moviePopup: false, currentGenre: 0, currentMovie: 0, slicer: genresData.genres.map(() => { return 0 }) };
+        // ovo sam prebacio u Actions
 
         if(!window.localStorage.getItem("access_token")) {
             this.props.history.push("/");
         }
     }
-    
-    
         
     componentDidMount() {
-
+        this.props.fetchGenres(genresData);
+        
         window.addEventListener("keydown", (e) => {
-
             if (this.state.moviePopup === false) {
                 if(e.key === "ArrowDown") {
-                    if(this.state.currentGenre === this.state.genreList.length - 1) {
+                    if(this.state.currentGenre === this.props.state.genreList.length - 1) {
                         this.setState({ currentGenre: 0 });
                     } else {
                         this.setState({ currentGenre: this.state.currentGenre + 1 });
@@ -49,13 +31,25 @@ class HomePage extends React.Component {
     
                 } else if (e.key === "ArrowUp") {
                     if(this.state.currentGenre === 0) {
-                        this.setState({ currentGenre: this.state.genreList.length - 1 });
+                        this.setState({ currentGenre: this.props.state.genreList.length - 1 });
                     } else {
                         this.setState({ currentGenre: this.state.currentGenre - 1 });
                     }
     
                 } else if (e.key === "ArrowRight") {
-                    if(this.state.currentMovie === this.state.genreList[0].movies.length - 1) {
+                    if(this.state.currentMovie === 5) {
+                        const newSlicer = this.state.slicer;
+                        newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] + 1;
+
+                        if(this.state.slicer[this.state.currentGenre] === this.props.state.genreList[this.state.currentGenre].movies.length - 5) {
+                            newSlicer[this.state.currentGenre] = 0;
+                            this.setState({ slicer: newSlicer, currentMovie: 0});
+                        }
+
+                        this.setState({ slicer: newSlicer });
+                    } else 
+
+                    if(this.state.currentMovie === this.props.state.genreList[this.state.currentGenre].movies.length - 1) {
                         this.setState({ currentMovie: 0 });
                     } else {
                         this.setState({ currentMovie: this.state.currentMovie + 1 });
@@ -63,7 +57,23 @@ class HomePage extends React.Component {
     
                 } else if (e.key === "ArrowLeft") {
                     if(this.state.currentMovie === 0) {
-                        this.setState({ currentMovie: this.state.genreList[0].movies.length - 1 });
+                        const newSlicer = this.state.slicer;
+                        newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] - 1;
+
+                        if(this.state.slicer[this.state.currentGenre] === - 1) {
+                            newSlicer[this.state.currentGenre] = this.props.state.genreList[this.state.currentGenre].movies.length - 6;
+                            this.setState({ slicer: newSlicer, currentMovie: 5});
+                        }
+
+                        this.setState({ slicer: newSlicer });
+                    } else
+
+                    if(this.state.currentMovie === 0) {
+                        this.setState({ sliceMovie: this.state.sliceMovie - 1 });
+                    } else
+
+                    if(this.state.currentMovie === 0) {
+                        this.setState({ currentMovie: this.props.state.genreList[this.state.currentGenre].movies.length - 1 });
                     } else {
                         this.setState({ currentMovie: this.state.currentMovie - 1 });
                     }
@@ -75,27 +85,27 @@ class HomePage extends React.Component {
                 if (e.key === "Escape") {
                     this.setState({moviePopup: false});
                 }
-            }
-            
-            
+            }            
         });
-
-        
 
     }
     
     render() {
-
         return (
             <div>
                 <GenresList 
-                    genreList={this.state.genreList} 
+                    genreList={this.props.state.genreList} 
                     currentGenreAndMovie={{ currentGenre: this.state.currentGenre, currentMovie: this.state.currentMovie }} 
                     moviePopup={this.state.moviePopup}
+                    slicer={this.state.slicer}
                 />                
             </div>
         );
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+    return { state: state };
+}
+
+export default connect(mapStateToProps, { fetchGenres })(HomePage);
