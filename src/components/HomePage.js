@@ -37,43 +37,40 @@ class HomePage extends React.Component {
                     }
     
                 } else if (e.key === "ArrowRight") {
-                    if(this.state.currentMovie === 5) {
-                        const newSlicer = this.state.slicer;
-                        newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] + 1;
 
-                        if(this.state.slicer[this.state.currentGenre] === this.props.state.genreList[this.state.currentGenre].movies.length - 5) {
-                            newSlicer[this.state.currentGenre] = 0;
-                            this.setState({ slicer: newSlicer, currentMovie: 0});
-                        }
+                    const newSlicer = this.state.slicer;
 
-                        this.setState({ slicer: newSlicer });
+                    if(newSlicer[this.state.currentGenre] === this.props.state.genreList[this.state.currentGenre].movies.length - 6) {
+                        newSlicer[this.state.currentGenre] = this.props.state.genreList[this.state.currentGenre].movies.length - 6;
+                        this.setState({ slicer: newSlicer});
                     } else 
 
-                    if(this.state.currentMovie === this.props.state.genreList[this.state.currentGenre].movies.length - 1) {
-                        this.setState({ currentMovie: 0 });
+                    if(this.state.currentMovie === 5) {
+                        newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] + 1;
+
+                        this.setState({ slicer: newSlicer });
                     } else {
                         this.setState({ currentMovie: this.state.currentMovie + 1 });
                     }
     
                 } else if (e.key === "ArrowLeft") {
-                    if(this.state.currentMovie === 0) {
-                        const newSlicer = this.state.slicer;
-                        newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] - 1;
+                    
+                    const newSlicer = this.state.slicer;
 
-                        if(this.state.slicer[this.state.currentGenre] === - 1) {
-                            newSlicer[this.state.currentGenre] = this.props.state.genreList[this.state.currentGenre].movies.length - 6;
-                            this.setState({ slicer: newSlicer, currentMovie: 5});
-                        }
+                    if (this.state.currentMovie === 0) {
 
-                        this.setState({ slicer: newSlicer });
+                        if(this.state.currentMovie === 0 && this.state.slicer[this.state.currentGenre] > 0) {
+                            newSlicer[this.state.currentGenre] = this.state.slicer[this.state.currentGenre] - 1;
+    
+                            this.setState({ slicer: newSlicer });
+                        } else 
+
+                        this.setState({ currentMovie: 0 });
                     } else
-
-                    if(this.state.currentMovie === 0) {
-                        this.setState({ sliceMovie: this.state.sliceMovie - 1 });
-                    } else
-
-                    if(this.state.currentMovie === 0) {
-                        this.setState({ currentMovie: this.props.state.genreList[this.state.currentGenre].movies.length - 1 });
+                    
+                    if(newSlicer[this.state.currentGenre] === 0) {
+                        newSlicer[this.state.currentGenre] = 0;
+                        this.setState({ slicer: newSlicer, currentMovie: this.state.currentMovie - 1});
                     } else {
                         this.setState({ currentMovie: this.state.currentMovie - 1 });
                     }
@@ -81,6 +78,7 @@ class HomePage extends React.Component {
                 } else if (e.key === "Enter") {
                     this.setState({ moviePopup: true });
                 }
+
             } else if (this.state.moviePopup === true) {
                 if (e.key === "Escape") {
                     this.setState({moviePopup: false});
