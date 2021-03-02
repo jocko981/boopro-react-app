@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
         
         axios.post("http://dev.api.kabox.io/api/auth/login", this.state)
         .then(response => {
-            console.log(response);
+
             if (response.status === 200) {
 
                 window.localStorage.setItem("access_token", response.data.access_token);
@@ -19,15 +19,11 @@ class LoginForm extends React.Component {
                 this.props.history.push("/home");
             }
         })
-        .catch(error => {
-            console.log(error.response.status); // 422 or 402
-            console.log(error.response);
-            
+        .catch(error => {  // 422 or 402            
             this.setState({ error: error.response.status });
         })
 
         this.setState({ error: null });
-        console.log(this.state);
     }
 
     render() {
