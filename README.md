@@ -3,7 +3,8 @@
 # Use Arrow keys to navigate, to opet movie info press Enter, and Esc to close it.
 #
 #This is the mini project I had to do before internship at Boopro Tech.
-
+#
+#
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
