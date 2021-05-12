@@ -1,5 +1,4 @@
-# You will have to download this and run it on your local machine to check out the app. To login use account: 
-# / example@boopro.tech / 123123 /
+# You will have to download this and run it on your local machine to check out the app. The backend is not working so Please skip the Login page and navigate manualty to /home
 # Use Arrow keys to navigate, to opet movie info press Enter, and Esc to close it.
 #
 #
