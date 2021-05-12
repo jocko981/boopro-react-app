@@ -1,5 +1,4 @@
-# You will have to download this and run it on your local machine to check out the app. To login use account: 
-example@boopro.tech / 123123
+# You will have to download this and run it on your local machine to check out the app. To login use account: / example@boopro.tech / 123123
 
 # Getting Started with Create React App
 
