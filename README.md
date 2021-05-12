@@ -1,4 +1,5 @@
-# You will have to download this and run it on your local machine to check out the app. The backend is not working for login so Please skip the Login page and navigate manualty to /home
+# You will have to download this and run it on your local machine to check out the app. 
+# The backend is not working for login so Please skip the Login page and navigate manualty to /home
 # Use Arrow keys to navigate, to opet movie info press Enter, and Esc to close it.
 #
 #
